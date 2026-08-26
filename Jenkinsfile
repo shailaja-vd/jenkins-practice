@@ -1,8 +1,11 @@
 pipeline {
     agent { label 'AGENT-1' }
-    environment{
+    environment { 
         PROJECT = 'EXPENSE'
         COMPONENT = 'BACKEND'
+    }
+    options { 
+        disableConcurrentBuilds() 
     }
     stages {
         stage('Build') {
@@ -10,7 +13,7 @@ pipeline {
                script{
                  sh """
                     echo "Hello, this is build"
-                    echo "project: $PROJECT"
+                    echo "Project: $PROJECT"
                  """
                }
             }
